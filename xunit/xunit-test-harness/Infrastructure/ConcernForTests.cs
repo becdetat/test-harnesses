@@ -3,16 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NUnit.Framework;
+using Xunit;
 
-namespace nunit_test_harness.Infrastructure
+namespace xunit_test_harness.Infrastructure
 {
-    public class Foo
-    {
-    }
-
-    [TestFixture]
-    public class FooTests : ConcernFor<Foo>
+    public class ConcernForTests : ConcernFor<Foo>
     {
         private bool _contextHasBeenExecuted;
         private bool _givenHasBeenExecuted;
@@ -34,29 +29,33 @@ namespace nunit_test_harness.Infrastructure
         {
             _whenHasBeenExecuted = true;
         }
-
-        [Test]
+        
+        [Fact]
         public void ContextShouldBeExecuted()
         {
-            Assert.IsTrue(_contextHasBeenExecuted);
+            Assert.True(_contextHasBeenExecuted);
         }
 
-        [Test]
+        [Fact]
         public void GivenShouldBeExecuted()
         {
-            Assert.IsTrue(_givenHasBeenExecuted);
+            Assert.True(_givenHasBeenExecuted);
         }
 
-        [Test]
+        [Fact]
         public void SubjectShouldBeAssigned()
         {
-            Assert.IsNotNull(Subject);
+            Assert.NotNull(Subject);
         }
 
-        [Test]
+        [Fact]
         public void WhenShouldBeExecuted()
         {
-            Assert.IsTrue(_whenHasBeenExecuted);
+            Assert.True(_whenHasBeenExecuted);
         }
+    }
+
+    public class Foo
+    {
     }
 }

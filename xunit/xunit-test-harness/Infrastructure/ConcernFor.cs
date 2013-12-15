@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NUnit.Framework;
 
-namespace nunit_test_harness.Infrastructure
+namespace xunit_test_harness.Infrastructure
 {
     public abstract class ConcernFor<T>
     {
-        protected T Subject;
+        protected T Subject { get; private set; }
 
-        [SetUp]
-        public virtual void SetUp()
+        public ConcernFor()
         {
             Context();
             Subject = Given();
